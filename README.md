@@ -45,7 +45,7 @@ A list of technologies used within the project:
 ***
 1. Clone the repo 
 ```
-$ git clone https://github.com/AntiPetrun/django_proj.git
+$ git clone https://github.com/ag-chernyavskaya/Schedule.git
 ```
 2. Install dependencies of your project
 ```
