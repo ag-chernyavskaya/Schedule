@@ -1,0 +1,44 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Список преподавателей{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Teachers</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'teacher_form' %}">Add teacher</a></button>
+        </div>
+    </div>
+</div>
+{% if teacher_list %}
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Full name</th>
+                    <th scope="col">Specialization</th>
+                    <th scope="col">Teaching course</th>
+                    <th scope="col">Teacher Profile</th>
+                </tr>
+            </thead>
+            {% for teacher in teacher_list %}
+            <tbody>
+                <tr>
+                    <td>{{ teacher }} {{ teacher.fathers_name }}</td>
+                    <td>{{ teacher.specialization }}</td>
+                    <td>{{ teacher.course_name }}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'teacher_detail' teacher.pk %}">View</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'teacher_edit' teacher.pk %}">Edit</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'teacher_confirm_delete' teacher.pk %}">Delete</a></button>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+{% else %}
+    <p>Курсы пока отсутствуют.</p>
+{% endif %}
+{% endblock %}

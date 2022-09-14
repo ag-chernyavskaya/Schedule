@@ -1,0 +1,27 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Просмотреть детали расписания :: Расписание курсов{% endblock %}
+
+{% block content %}
+    <h1>Название курса: {{ schedule.course }}</h1>
+    <p><strong>Расположение:</strong> {{ schedule.location }}</p>
+    <p><strong>Преподаватель:</strong> {{ schedule.teacher }}
+    <p><strong>Комментарий:</strong> {{ schedule.comment }}
+    <p>
+        <a href="{% url 'add-schedule' %}">
+            <button
+            type="button" class="btn btn-dark"><i class="bi bi-file-earmark-plus">ДОБАВТЬ</i>
+            </button>
+        </a>
+        <a href="{% url 'edit-schedule' schedule.pk %}">
+            <button
+            type="button" class="btn btn-dark"><i class="bi bi-file-earmark-plus">ПРАВИТЬ</i>
+            </button>
+        </a>
+        <a href="{% url 'delete-schedule' schedule.pk %}">
+            <button
+            type="button" class="btn btn-dark"><i class="bi bi-file-earmark-plus">УДАЛИТЬ</i>
+            </button>
+        </a>
+    </p>
+{% endblock %}

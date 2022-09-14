@@ -1,0 +1,13 @@
+{% extends 'layout/basic.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Добавить в расписание курс :: Расписание курсов{% endblock %}
+
+{% block content %}
+<h1>Добавить в расписание курс</h1>
+<form action='' method='post'>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type='submit' value='Добавить'>
+</form>
+{% endblock %}

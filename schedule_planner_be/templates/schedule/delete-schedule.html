@@ -1,0 +1,11 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Удалить курс из расписания :: Расписание курсов{% endblock %}
+
+{% block content %}
+<h1>Вы уверены, что хотите удалить курс из расписания {{ schedule }}?</h1>
+<form method='post'>
+    {% csrf_token %}
+    <input type='submit' value='Удалить'>
+</form>
+{% endblock %}

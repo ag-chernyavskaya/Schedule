@@ -1,0 +1,19 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Станции метро{% endblock %}
+
+{% block content %}
+    <h1>Список станций метро</h1>
+
+    {% if subwaystation_list %}
+    <ul>
+        {% for station in subwaystation_list %}
+        <li>
+            <a href="{% url 'subway-detail' station.pk %}">{{ station }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>Станции метро отсутствуют.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'layout/basic.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Обновить информацию об аудитории :: Метро{% endblock %}
+
+{% block content %}
+<h1>Обновить информацию по аудитории</h1>
+<form action='' method='post'>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type='submit' value='Обновить'>
+</form>
+{% endblock %}

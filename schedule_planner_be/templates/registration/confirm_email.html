@@ -1,0 +1,20 @@
+{% extends 'User/_base.html' %}
+
+{% block content %}
+    <h2>Verification</h2>
+    <div class="row">
+        <p>Please check your email to complete your registration.</p>
+        <p>If within 60 seconds you have not received a letter, enter your email and click on the button</p>
+    </div>
+        <form action="{% url 'send_repeat_message' %}" method="get">
+            <div class="left-side my-4">
+        <ul class="w3layouts-box-list">
+            <li class="editContent">
+                <input type="search" placeholder="Enter you email" name="email">
+            </li>
+        </ul>
+    </div>
+    <button type="submit"> Send repeat message </button>
+    </form>
+
+{% endblock %}

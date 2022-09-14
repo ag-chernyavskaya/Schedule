@@ -1,0 +1,11 @@
+{% extends 'User/_base.html' %}
+
+{% block title %}Invalid verify{% endblock %}
+
+{% block content %}
+    <h2>Verification</h2>
+    <div class="row">
+        <p>Your link is invalid, please login again</p>
+        <a href="{% url 'login' %}">Log in</a>
+    </div>
+{% endblock %}

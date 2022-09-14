@@ -1,0 +1,11 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Удалить профиль преподавателя :: Преподаватель{% endblock %}
+
+{% block content %}
+<h1>Вы уверены, что хотите удалить профиль преподавателя {{ teacher.surname }} {{ teacher.name }}?</h1>
+<form method='post'>
+    {% csrf_token %}
+    <input type='submit' value='Удалить'>
+</form>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Информация о месте расположения :: Локация{% endblock %}
+
+{% block content %}
+    <h1>Город: {{ location.city }}</h1>
+    <p><strong>Улица:</strong> {{ location.street }}</p>
+    <p><strong>Строение:</strong> {{ location.building }}
+    <p><strong>Станция метро:</strong> {{ location.subway }}
+    <p>
+        <a href="{% url 'add-location' %}">
+            <button
+            type="button" class="btn btn-dark"><i class="bi bi-file-earmark-plus">ДОБАВТЬ</i>
+            </button>
+        </a>
+        <a href="{% url 'edit-location' location.pk %}">
+            <button
+            type="button" class="btn btn-dark"><i class="bi bi-file-earmark-plus">ПРАВИТЬ</i>
+            </button>
+        </a>
+        <a href="{% url 'delete-location' location.pk %}">
+            <button
+            type="button" class="btn btn-dark"><i class="bi bi-file-earmark-plus">УДАЛИТЬ</i>
+            </button>
+        </a>
+    </p>
+{% endblock %}

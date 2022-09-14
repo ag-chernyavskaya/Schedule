@@ -1,0 +1,11 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Удалить комментарий :: Комментарии{% endblock %}
+
+{% block content %}
+<h1>Вы уверены, что хотите удалить комментарий {{ comment.body }}?</h1>
+<form method='post'>
+    {% csrf_token %}
+    <input type='submit' value='Удалить'>
+</form>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Удалить место расположения из локаций :: Локации{% endblock %}
+
+{% block content %}
+<h1>Вы уверены, что хотите удалить локацию {{ location }}?</h1>
+<form method='post'>
+    {% csrf_token %}
+    <input type='submit' value='Удалить'>
+</form>
+{% endblock %}

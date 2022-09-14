@@ -1,0 +1,14 @@
+{% extends 'User/_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2 class="h3 mb-3 fw-normal">Sign Up</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+  <a href="{% url 'login' %}">Already registered</a>
+  <input type="hidden" name="next" value="{{ next }}" />
+<p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+</form>
+{% endblock %}

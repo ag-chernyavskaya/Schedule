@@ -1,0 +1,27 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}About course :: Courses{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1><strong>About course</strong> {{ course.course_name }}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'course_form' %}">Create</a></button>
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'course_edit' course.pk %}">Edit</a></button>
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'course_confirm_delete' course.pk %}">Delete</a></button>
+        </div>
+    </div>
+</div>
+<div>
+    <p><strong>Teacher:</strong> {{ course.teacher }}</p>
+    <p><strong>Start date:</strong> {{ course.start_date }}</p>
+    <p><strong>Start day of week:</strong> {{ course.day_of_week }}</p>
+    <p><strong>Start time</strong> {{ course.start_time}}</p>
+    <p><strong>Days of week:</strong> {{ course.days_of_week}}</p>
+    <p><strong>Location:</strong> {{ course.location}}</p>
+    <p><strong>Number of lessons:</strong> {{ course.number_of_lessons}}</p>
+    <p><strong>Course type:</strong> {{ course.course_type}}</p>
+    <p><strong>All course dates:</strong> {{ course.all_course_days}}</p>
+</div>
+{% endblock %}

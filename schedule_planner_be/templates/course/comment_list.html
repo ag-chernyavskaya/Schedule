@@ -1,0 +1,44 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}All comments{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">All comments to schedule</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'comment_form' %}">Create comment</a></button>
+        </div>
+    </div>
+</div>
+{% if comment_list %}
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Created date</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Text</th>
+                    <th scope="col">Actions to course</th>
+                </tr>
+            </thead>
+            {% for comment in comment_list %}
+            <tbody>
+                <tr>
+                    <td>{{ comment.created }}</td>
+                    <td>{{ comment.course.course_name }}</td>
+                    <td>{{comment.body}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'comment_detail' comment.pk %}">View</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'comment_edit' comment.pk %}">Edit</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'comment_confirm_delete' comment.pk %}">Delete</a></button>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+{% else %}
+    <p>Курсы пока отсутствуют.</p>
+{% endif %}
+{% endblock %}

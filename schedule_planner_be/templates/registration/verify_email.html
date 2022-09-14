@@ -1,0 +1,7 @@
+{% autoescape off %}
+You have been registered at Belhard Academy Schedule Planner.
+Please, follow the link to sign in
+
+http://{{ domain }}{% url 'verify_email' uidb64=uid token=token %}
+
+{% endautoescape %}

@@ -1,0 +1,18 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Информация о преподавателе :: Преподаватель{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1><strong>Teacher:</strong> {{ teacher }} {{ teacher.fathers_name }}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'teacher_form' %}">Create</a></button>
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'teacher_edit' teacher.pk %}">Edit</a></button>
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'teacher_confirm_delete' teacher.pk %}">Delete</a></button>
+        </div>
+    </div>
+</div>
+    <h4><strong>Specialization:</strong>{{ teacher.specialization }}</h4>
+    <p><strong>Teaching courses:</strong> {{ teacher.course_name }}</p>
+{% endblock %}

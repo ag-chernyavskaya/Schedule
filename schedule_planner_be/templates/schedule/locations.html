@@ -1,0 +1,49 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Location{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Locations</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'add-classroom' %}">Add classroom</a></button>
+        </div>
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'add-location' %}">Add location</a></button>
+        </div>
+    </div>
+</div>
+{% if location_list %}
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">City</th>
+                    <th scope="col">Street</th>
+                    <th scope="col">Building</th>
+                    <th scope="col">Subway</th>
+                    <th scope="col">Actions to location</th>
+                </tr>
+            </thead>
+            {% for location in location_list %}
+            <tbody>
+                <tr>
+                    <td>{{ location.city }}</td>
+                    <td>{{ location.street }}</td>
+                    <td>{{ location.building }}</td>
+                    <td>{{ location.subway }}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'location-detail' location.pk %}">View</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'edit-location' location.pk %}">Edit</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'delete-location' location.pk %}">Delete</a></button>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+{% else %}
+    <p>Location doesn't exists.</p>
+{% endif %}
+{% endblock %}

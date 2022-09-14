@@ -1,0 +1,61 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Список курсов{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Courses</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'course_form' %}">Create course</a></button>
+        </div>
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'csv_courses_list_write' %}">Export</a></button>
+        </div>
+    </div>
+</div>
+{% if course_list %}
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Start day</th>
+                    <th scope="col">Days of week</th>
+                    <th scope="col">Start time</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Duration (lessons)</th>
+                    <th scope="col">Comments to course</th>
+                    <th scope="col">Actions to course</th>
+                </tr>
+            </thead>
+            {% for course in course_list %}
+            <tbody>
+                <tr>
+                    <td>{{ course.course_name }}</td>
+                    <td>{{ course.course_type }}</td>
+                    <td>{{ course.start_date }}</td>
+                    <td>{{ course.start_day_of_week }}</td>
+                    <td>{{ course.start_time }}</td>
+                    <td>{{ course.location }}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'course_by_lessons' course.pk %}">{{ course.number_of_lessons }} lessons</a></button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'comments_by_course' course.pk %}">View comments</a></button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'course_detail' course.pk %}">View</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'course_edit' course.pk %}">Edit</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'course_confirm_delete' course.pk %}">Delete</a></button>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+{% else %}
+    <p>Курсы пока отсутствуют.</p>
+{% endif %}
+{% endblock %}

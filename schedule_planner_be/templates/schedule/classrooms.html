@@ -1,0 +1,49 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Classroom{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Classrooms</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'add-classroom' %}">Add classroom</a></button>
+        </div>
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'add-location' %}">Add location</a></button>
+        </div>
+    </div>
+</div>
+{% if classroom_list %}
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Number</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Seats number</th>
+                    <th scope="col">PC number</th>
+                    <th scope="col">Actions to classroom</th>
+                </tr>
+            </thead>
+            {% for classroom in classroom_list %}
+            <tbody>
+                <tr>
+                    <td>{{ classroom.classroom }}</td>
+                    <td>{{ classroom.location }}</td>
+                    <td>{{ classroom.seats_number }}</td>
+                    <td>{{ classroom.pc_number }}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'classroom-detail' classroom.pk %}">View</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'edit-classroom' classroom.pk %}">Edit</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'delete-classroom' classroom.pk %}">Delete</a></button>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+{% else %}
+    <p>Classroom doesn't exists</p>
+{% endif %}
+{% endblock %}
